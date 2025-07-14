@@ -1,0 +1,16 @@
+﻿@model KatalogProduk.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Checkout Berhasil";
+}
+
+<h2 class="text-success">Checkout Berhasil!</h2>
+<p>Terima kasih telah memesan <strong>@Model.ProductName</strong>.</p>
+<ul>
+    <li>Tanggal Order: @Model.OrderDate.ToShortDateString()</li>
+    <li>Jumlah: @Model.Quantity</li>
+    <li>Lokasi Pengiriman: @Model.ShippingLocation</li>
+    <li>Total: Rp @Model.TotalPrice.ToString("N0")</li>
+</ul>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Kembali ke Beranda</a>
