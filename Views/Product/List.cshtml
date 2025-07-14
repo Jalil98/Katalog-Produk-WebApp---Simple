@@ -1,0 +1,34 @@
+﻿@model List<KatalogProduk.Models.Product>
+
+@{
+    ViewData["Title"] = "Daftar Produk";
+}
+
+<h2>Daftar Produk</h2>
+<form method="get" asp-action="List" class="mb-3">
+    <label for="category">Filter Kategori:</label>
+    <select name="category" onchange="this.form.submit()" class="form-select w-auto d-inline-block ms-2">
+        <option value="">Semua</option>
+        <option value="Coding">Coding</option>
+        <option value="Math">Math</option>
+        <option value="Python">Python</option>
+        <option value="Logika">Logika</option>
+    </select>
+</form>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="height: 180px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p><strong>Rp @product.Price.ToString("N0")</strong></p>
+                    <a href="/Product/Detail/@product.Id" class="btn btn-info mt-auto">Detail</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
